@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<!-- Define your beans here -->
+
+	<!-- define the dependency -->
+	<bean id="myFortuneService"
+		class="com.br.springdemo.HappyFortuneService">
+	</bean>
+
+	<!-- Constructor Injection -->
+	<bean id="trackCoach" class="com.br.springdemo.TrackCoach">
+		<constructor-arg ref="myFortuneService" />
+	</bean>
+
+	<!-- Constructor Injection -->
+	<bean id="baseBallCoach" class="com.br.springdemo.BaseballCoach">
+		<constructor-arg ref="myFortuneService" />
+	</bean>
+
+	<!-- get/set Injection -->
+	<bean id="cricketCoach" class="com.br.springdemo.CricketCoach">
+		<property name="fortuneService" ref="myFortuneService"></property>
+		<property name="team" value="Guarani"></property>
+		<property name="emailAdress" value="jpcallerani@gmail.com"></property>
+	</bean>
+</beans>
+
+
+
+
+
